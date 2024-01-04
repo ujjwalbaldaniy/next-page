@@ -1,9 +1,16 @@
 import Cookies from "js-cookie";
-import { TOKEN_KEY } from "./constant";
+import { ROLE_TOKEN_KEY, TOKEN_KEY } from "./constant";
 
 export const setAuthToken = (token) => {
   if (token !== undefined && token !== null) {
     Cookies.set(TOKEN_KEY, token, {
+      expires: 7,
+    });
+  }
+};
+export const setAuthTokenRole = (token) => {
+  if (token !== undefined && token !== null) {
+    Cookies.set(ROLE_TOKEN_KEY, token, {
       expires: 7,
     });
   }

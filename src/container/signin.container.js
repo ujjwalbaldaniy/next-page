@@ -1,7 +1,7 @@
 import useUseRoute from "@/hooks/useUseRoute";
 import { api } from "@/utils/api";
 import { LOGIN_API, POST } from "@/utils/apiPath";
-import { setAuthToken } from "@/utils/auth";
+import { setAuthToken, setAuthTokenRole } from "@/utils/auth";
 import { ACCESS_TOKEN } from "@/utils/constant";
 import { ManageErrorList, keys, length } from "@/utils/javascript";
 import { setLocalStorageItem } from "@/utils/localStorage";
@@ -43,6 +43,7 @@ const SignInContainer = () => {
         const { data } = res;
         setLocalStorageItem(ACCESS_TOKEN, data);
         setAuthToken(data?.token);
+        setAuthTokenRole(data?.role);
         handlePush("/client");
       } else {
         console.error("Login failed:", res?.data);
